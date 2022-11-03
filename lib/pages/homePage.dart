@@ -4,14 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_app/models/catalog.dart';
-import 'package:my_app/pages/cartPage.dart';
 import 'package:my_app/utils/routes.dart';
-import 'package:my_app/widgets/drawer.dart';
-import 'package:my_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../widgets/item_widget.dart';
 import '../widgets/home_widgets/catalog_header.dart';
-import '../widgets/home_widgets/catalog_image.dart';
 import '../widgets/home_widgets/catalog_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,13 +42,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // final dummyList = List.generate(4, (index) => CatalogModel.items[0]);
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: MyTheme.darkBluishColor,
         onPressed: () {
           Navigator.pushNamed(context, MyRoutes.cartRoute);
         },
-        child: Icon(CupertinoIcons.cart),
+        child: const Icon(
+          CupertinoIcons.cart,
+          color: Colors.white,
+        ),
       ),
       body: SafeArea(
         child: Container(
@@ -61,13 +58,15 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CatalogHeader(),
+                const CatalogHeader(),
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-                  CatalogList().p16().expand()
+                  const CatalogList().p8().expand()
                 else
                   Center(
-                    child:
-                        CircularProgressIndicator().centered().py16().expand(),
+                    child: const CircularProgressIndicator()
+                        .centered()
+                        .py16()
+                        .expand(),
                   )
               ],
             )),

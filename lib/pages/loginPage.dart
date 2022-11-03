@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       //         fontSize: 40, color: Colors.blue, fontWeight: FontWeight.bold),
       //   ),
       // ),
-      color: Colors.white,
+      color: Theme.of(context).canvasColor,
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -91,8 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                       height: 40,
                     ),
                     Material(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(changeBtn ? 50 : 0),
+                      color: Theme.of(context)
+                          .floatingActionButtonTheme
+                          .backgroundColor,
+                      borderRadius: BorderRadius.circular(changeBtn ? 50 : 10),
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
