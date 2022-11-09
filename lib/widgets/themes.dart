@@ -4,8 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-      primaryTextTheme:
-          TextTheme(bodyMedium: TextStyle(color: darkBluishColor)),
+      primaryTextTheme: TextTheme(bodyMedium: TextStyle(color: darkCreamColor)),
       primarySwatch: Colors.deepPurple,
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.white,
@@ -17,13 +16,13 @@ class MyTheme {
       floatingActionButtonTheme:
           FloatingActionButtonThemeData(backgroundColor: darkBluishColor),
       appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.black,
           color: Colors.white,
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.black)));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-      primaryTextTheme:
-          TextTheme(bodyMedium: TextStyle(color: darkBluishColor)),
+      primaryTextTheme: TextTheme(bodyMedium: TextStyle(color: creamColor)),
       brightness: Brightness.dark,
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.black,
@@ -35,6 +34,7 @@ class MyTheme {
       floatingActionButtonTheme:
           FloatingActionButtonThemeData(backgroundColor: lightBluishColor),
       appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.white,
           color: Colors.black,
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white)));
