@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class CatalogModel {
-  static List<Item> items = [];
+  List<Item> items = [];
 
   // Get Item by ID
   Item getById(int id) =>

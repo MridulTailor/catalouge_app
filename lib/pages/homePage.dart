@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_app/models/catalog.dart';
 import 'package:my_app/utils/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../utils/cartServices.dart';
+import '../utils/catalogServices.dart';
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
 
@@ -19,7 +23,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final int days = 30;
 
-  final String name = "Codepur";
+  final String name = "Mridul tailor";
+  List<Item>? items;
+  List<Item> cart = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -28,13 +34,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
-    final decodedData = jsonDecode(catalogJson);
-    var productsData = decodedData["products"];
-    CatalogModel.items = List.from(productsData)
-        .map<Item>((item) => Item.fromMap(item))
-        .toList();
+    try {
+      items = (await CatalogServices().getCatalog()).items;
+      cart = await CartServices().getCartItems();
+    } catch (e) {
+      rethrow;
+    }
     setState(() {});
   }
 
@@ -59,14 +64,14 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const CatalogHeader(),
-                if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-                  const CatalogList().p8().expand()
+                if (items != null && items!.isNotEmpty)
+                  CatalogList(
+                    items: items!,
+                    cart: cart,
+                  ).p8().expand()
                 else
                   Center(
-                    child: const CircularProgressIndicator()
-                        .centered()
-                        .py16()
-                        .expand(),
+                    child: const CircularProgressIndicator().centered().py16(),
                   )
               ],
             )),
