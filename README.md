@@ -1,8 +1,23 @@
 # my_app
 
-A new Flutter project.
+ An ecommerce catalouge app made in Flutter in my 30 days of Flutter challenge with Codepur. 
 
-## Getting Started
+# Features I implemented:
+- Dark/Light mode according to system preference
+- Fetching items data from JSON which I hosted as Gtihub Gist
+- Items persistence in cart through Shared Preferences
+<table>
+<tr>
+<td>
+<img src="https://user-images.githubusercontent.com/71081929/205268934-318508fc-03f8-4d6b-b3a6-132ad56f26ba.png" width="500px">
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/71081929/205268613-b7a509bf-3b94-4b49-9d08-17ee497c0df4.png" width="500px">
+</td>
+</tr>
+</table>
+
+# Getting Started
 
 This project is a starting point for a Flutter application.
 
