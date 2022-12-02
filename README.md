@@ -1,6 +1,6 @@
 # my_app
 
- An ecommerce catalouge app made in Flutter in my 30 days of Flutter challenge with Codepur. 
+ An ecommerce catalouge app made in Flutter in my 30 days of Flutter challenge with Codepur. Different branches contain my day wise learning and implementation. Newest Branch is 'New16'
 
 # Features I implemented:
 - Dark/Light mode according to system preference
